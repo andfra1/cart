@@ -1,0 +1,286 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0;
+  font-size: 16px;
+  color: #000;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+h1 {
+  font-size: 32px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.wrapper {
+  max-width: 1080px;
+  margin: 60px auto;
+  position: relative;
+  padding: 0 30px;
+}
+
+.cart {
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.5s 0s;
+  &--open {
+    max-height: 1000px;
+    transition: max-height 0.5s 0.3s;
+    & .cart__item+.cart__itemSum {
+      display: block;
+    }
+    &>.cart__item {
+      opacity: 1;
+      transition: opacity 0.3s 0.5s;
+    }
+  }
+  &__item {
+    display: flex;
+    opacity: 0;
+    border-bottom: dashed 1px #f5f5f5;
+    padding: 15px 40px 15px 30px;
+    transition: opacity 0.3s 0s;
+    position: relative;
+    @include mq(700) {
+      flex-wrap: wrap;
+    }
+    &:hover {
+      background-color: rgba(#f5f5f5, 0.3);
+      & .cart__itemRemove {
+        display: block;
+      }
+    }
+    &Img {
+      background-repeat: no-repeat;
+      background-size: auto 100%;
+      background-position: center;
+      height: 90px;
+      width: 160px;
+      @include mq(500) {
+        margin: 0 auto;
+      }
+    }
+    &Name {
+      align-self: center;
+      flex: 1;
+      padding: 0 10px;
+      @include mq(500) {
+        flex: auto;
+        margin: 15px 0;
+        text-align: center;
+      }
+    }
+    &Sum {
+      display: none;
+      font-size: 24px;
+      text-align: right;
+      border-top: 2px solid #000;
+      padding: 20px;
+      &:before {
+        content: 'Suma: ';
+      }
+      &:after {
+        content: 'zł';
+      }
+    }
+    &Remove {
+      display: none;
+      position: absolute;
+      right: 10px;
+      top: calc(50% - 10px);
+      transform: translate(0, -50%);
+      width: 20px;
+      height: 20px;
+      background-color: transparent;
+      border: 1px solid red;
+      border-radius: 50%;
+      transform: rotate(45deg);
+      line-height: 16px;
+      color: red;
+    }
+  }
+  &Bttn {
+    margin: 15px 0;
+    padding: 5px 10px;
+    background: transparent;
+    border: 1px solid #000;
+    font-size: 12px;
+    position: relative;
+    height: 36px;
+  }
+}
+
+.calc {
+  vertical-align: middle;
+  width: 200px;
+  height: 100%;
+  align-self: center;
+  @include mq(700) {
+    width: 100%;
+    text-align: center;
+  }
+  &>* {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 5px;
+    outline: none;
+  }
+  &>*>* {
+    outline: none;
+  }
+  & .cart__itemPrice {
+    font-size: 20px;
+    margin-left: 20px;
+    @include mq(500) {
+      margin: 10px 0;
+      width: 100%;
+      display: block;
+    }
+    &:after {
+      content: 'zł';
+    }
+  }
+  &__input {
+    &>* {
+      outline: none;
+    }
+    &Box {
+      display: inline-block;
+      height: 100%;
+      &Field {
+        display: block;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        background-color: transparent;
+        border: 1px solid #ccc;
+        &:focus {
+          border: 1px solid #000;
+        }
+      }
+    }
+    &Bttn {
+      height: 25px;
+      width: 25px;
+      line-height: 23px;
+      background-color: transparent;
+      border: 1px solid #ccc;
+      border-radius: 50%;
+      position: relative;
+      transition: all 0.4s;
+      &:hover {
+        background-color: #ccc;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.productsSection {
+  h1 {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .productSort {
+    display: inline-block;
+    margin-left: 20px;
+    vertical-align: middle;
+    padding: 5px 10px;
+    background: transparent;
+    border: 1px solid #000;
+    font-size: 12px;
+    height: 36px;
+    @include mq(350) {
+      margin: 15px auto;
+      display: block;
+    }
+  }
+}
+
+.products {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s;
+  &__item {
+    margin: 10px;
+    min-height: 320px;
+    width: 230px;
+    min-width: 200px;
+    text-align: center;
+    padding: 10px 30px 66px 30px;
+    border: 1px solid #f5f5f5;
+    position: relative;
+    transition: all 0.3s;
+    &:hover {
+      background-color: rgba(#f5f5f5, 0.3);
+      .products__itemImg {
+        background-size: auto 110%;
+      }
+    }
+    &Img {
+      width: 100%;
+      height: 110px;
+      background-repeat: no-repeat;
+      background-size: auto 100%;
+      background-position: center;
+      margin: 20px 0;
+      transition: all 0.3s;
+    }
+    &Name {
+      text-align: center;
+      margin: 10px 0;
+      text-transform: lowercase;
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
+    &Price {
+      text-align: center;
+      margin: 10px 0;
+      font-weight: 700;
+      &:after {
+        content: 'zł';
+      }
+    }
+    &Bttn {
+      margin: 15px 0;
+      padding: 5px 10px;
+      background: #fff;
+      border: 1px solid #000;
+      font-size: 12px;
+      position: absolute;
+      height: 36px;
+      bottom: 0px;
+      left: 50%;
+      transform: translate(-50%, 0);
+      width: 70%;
+      transition: all 0.3s;
+      &:before {
+        content: 'DODAJ';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 0px;
+        font-weight: 700;
+        transition: all 0.3s;
+      }
+      &--hide {
+        display: none;
+      }
+      &:hover {
+        font-size: 0;
+        &:before {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

@@ -83,16 +83,17 @@
           <p class="cart__text">
           <?= $cart['text']?>
           </p>
+          <div class="cart__itemSum"></div>
         </div>
       </div>
     </section>
 
-    <section>
+    <section class="productsSection">
       <div class="wrapper">
         <h1>
           <?= $products['name']?>
         </h1>
-        <select name="productSort" id="productSort">
+        <select name="productSort" id="productSort" class="productSort">
           <?php
             foreach($products['sort'] as $name => $text) :
           ?>
