@@ -1,0 +1,31 @@
+{
+    "name": "dupa",
+    "version": "1.0.0",
+    "description": "",
+    "author": "andfra",
+    "url": "http://andfra1.github.io",
+    "license": "UNLICENSED",
+    "keywords": "gulp",
+    "scripts": {
+        "version": "echo $npm_package_version"
+    },
+    "devDependencies": {
+        "browser-sync": "^2.23.6",
+        "es6-promise": "*",
+        "gulp": "^3.9.1",
+        "gulp-autoprefixer": "*",
+        "gulp-browserify": "*",
+        "gulp-clean-css": "*",
+        "gulp-concat": "*",
+        "gulp-csscomb": "*",
+        "gulp-csslint": "*",
+        "gulp-jshint": "^2.1.0",
+        "gulp-merge-media-queries": "*",
+        "gulp-notify": "*",
+        "gulp-plumber": "*",
+        "gulp-rename": "*",
+        "gulp-sass": "*",
+        "gulp-uglify": "*",
+        "jshint": "^2.9.5"
+    }
+}
