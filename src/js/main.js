@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  let item = document.getElementsByClassName('products__item'),
+  var item = document.getElementsByClassName('products__item'),
     products = document.getElementsByClassName('products')[0],
     itemBttn = document.getElementsByClassName('products__itemBttn'),
     selectElem = document.getElementById('productSort'),
@@ -35,11 +35,11 @@ document.addEventListener("DOMContentLoaded", function () {
     cartBttn.textContent = 'Zwiń koszyk';
     cartBttn.setAttribute('data-switch', 'on');
     cart.classList.add('cart--open');
-    let cartGetItem = [];
+    var cartGetItem = [];
     this.classList.add('products__itemBttn--hide');
     cartText.style.display = 'none';
     cartGetItem.push(this.parentNode);
-
+    
     //makes an object with items (products)
     for (var index = 0; index < cartGetItem.length; index++) {
       cartObj.img = cartGetItem[index].children[0].getAttribute('style');
@@ -47,38 +47,38 @@ document.addEventListener("DOMContentLoaded", function () {
       cartObj.price = Number(cartGetItem[index].children[2].innerText);
       cartItem.push(cartObj);
 
-      let cartItemElem = document.createElement('div');
+      var cartItemElem = document.createElement('div');
       cartItemElem.classList.add('cart__item');
       cartItemElem.innerHTML = '<div class="cart__itemImg" style="' + cartItem[index].img + '"></div><div class="cart__itemName">' + cartItem[index].name + '</div>';
 
-      let calc = document.createElement('div');
+      var calc = document.createElement('div');
       calc.classList.add('cart__itemCalc', 'calc');
 
-      let calcBox = document.createElement('div');
+      var calcBox = document.createElement('div');
       calcBox.classList.add('calc__inputBox');
 
-      let calcField = document.createElement('input');
+      var calcField = document.createElement('input');
       calcField.classList.add('calc__inputBoxField');
       calcField.setAttribute('value', 1);
       calcField.setAttribute('min', 0);
       calcField.addEventListener('keyup', inptVal, false);
 
-      let calcMore = document.createElement('button');
+      var calcMore = document.createElement('button');
       calcMore.classList.add('calc__inputBttn', 'calc__inputBttnMore');
       calcMore.textContent = '+';
       calcMore.addEventListener('click', count, false);
 
-      let calcLess = document.createElement('button');
+      var calcLess = document.createElement('button');
       calcLess.classList.add('calc__inputBttn', 'calc__inputBttnLess');
       calcLess.textContent = '-';
       calcLess.addEventListener('click', count, false);
 
-      let calcPrice = document.createElement('div');
+      var calcPrice = document.createElement('div');
       calcPrice.classList.add('cart__itemPrice');
       calcPrice.textContent = cartItem[index].price;
       calcPrice.setAttribute('value', cartItem[index].price);
 
-      let cartRemove = document.createElement('button');
+      var cartRemove = document.createElement('button');
       cartRemove.classList.add('cart__itemRemove');
       cartRemove.textContent = '+';
       cartRemove.addEventListener('click', removeFromCart, false);
@@ -123,10 +123,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //counts prices when input has directly changed value
   function inptVal() {
-    let _this = this;
-    let val = _this.value;
-    let getPrice = this.parentNode.parentNode.lastChild;
-    let getPriceVal = Number(getPrice.getAttribute('value'));
+    var _this = this;
+    var val = _this.value;
+    var getPrice = this.parentNode.parentNode.lastChild;
+    var getPriceVal = Number(getPrice.getAttribute('value'));
     getPriceVal = getPriceVal * val;
     val = val;
     getPrice.innerHTML = getPriceVal;
@@ -135,10 +135,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //set amout and multiply price by it
   function count(e) {
-    let inputField = this.parentNode.firstChild.children[0];
-    let val = inputField.value;
-    let getPrice = this.parentNode.lastChild;
-    let getPriceVal = Number(getPrice.getAttribute('value'));
+    var inputField = this.parentNode.firstChild.children[0];
+    var val = inputField.value;
+    var getPrice = this.parentNode.lastChild;
+    var getPriceVal = Number(getPrice.getAttribute('value'));
     if (this.classList.contains('calc__inputBttnMore')) {
       val++;
       this.classList.add('calc__inputBttnMore--anim');
@@ -160,10 +160,10 @@ document.addEventListener("DOMContentLoaded", function () {
   //counting all prices in sum element
   function result() {
     sum.innerHTML = '';
-    let suma = 0;
-    let prices = document.getElementsByClassName('cart__itemPrice');
+    var suma = 0;
+    var prices = document.getElementsByClassName('cart__itemPrice');
     for (var index = 0; index < prices.length; index++) {
-      let itemPrice = Number(prices[index].textContent);
+      var itemPrice = Number(prices[index].textContent);
       suma += itemPrice;
       sum.innerHTML = suma;
     }
@@ -206,11 +206,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //displays sorted array 'itemsArr';
     for (var index = 0; index < itemLen; index++) {
-      let divItem = document.createElement('div');
+      var divItem = document.createElement('div');
       divItem.classList.add('products__item');
       divItem.innerHTML = '<div class="products__itemImg" style="' + itemsArr[index].img + '"></div><div class="products__itemName">' + itemsArr[index].name + '</div><div class="products__itemPrice">' + itemsArr[index].price + '</div>';
 
-      let itmBttn = document.createElement('button');
+      var itmBttn = document.createElement('button');
       itmBttn.setAttribute('class', itemsArr[index].bttn.value);
       itmBttn.innerText = 'Dodaj do koszyka';
       itmBttn.addEventListener('click', addToCart, false);

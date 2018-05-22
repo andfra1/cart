@@ -12,7 +12,7 @@ h1 {
   font-size: 32px;
 }
 
-button {
+button, select, option {
   cursor: pointer;
 }
 
@@ -116,7 +116,7 @@ button {
 
 .calc {
   vertical-align: middle;
-  width: 200px;
+  width: 220px;
   height: 100%;
   align-self: center;
   @include mq(700) {
